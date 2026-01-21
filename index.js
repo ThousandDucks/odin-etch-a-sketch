@@ -28,4 +28,4 @@ function createCells(rowNum, colNum) {
     createCol(colNum)
 }
 
-createCells(3,3)
+createCells(16,16)
