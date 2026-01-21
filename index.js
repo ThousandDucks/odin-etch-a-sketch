@@ -1,8 +1,6 @@
-
+// Create grid
 const canvas = document.getElementById("canvas")
 const rows = document.querySelectorAll(".row")
-
-
 
 function createRow(rowNum) {
     for (let i=0; i<rowNum; i++) {
@@ -19,6 +17,17 @@ function createCol(colNum) {
             let col = document.createElement("div")
             col.classList.add("col")
             row.append(col)
+
+            col.addEventListener("mouseover", (event) => {
+            if (mouseDown) {
+                event.target.style.backgroundColor = "blue";
+            }
+            })
+
+            canvas.addEventListener("dragstart", (event) => {
+            event.preventDefault();
+            });
+
         }
     })
 }
@@ -29,3 +38,17 @@ function createCells(rowNum, colNum) {
 }
 
 createCells(16,16)
+
+// Allow for colouring of grid
+let mouseDown = false;
+
+document.addEventListener("mousedown", () => {
+    mouseDown = true;
+})
+
+document.addEventListener("mouseup", () => {
+    mouseDown = false;
+})
+
+
+
