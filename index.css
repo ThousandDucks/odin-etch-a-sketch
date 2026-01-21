@@ -27,4 +27,14 @@ body {
 button {
   margin-bottom: 10px;
 }
+#buttons {
+  display: flex;
+  gap: 10px;
+}
 
+.colourBtn {
+   border: 1px outset;
+   height:50px;
+   width:50px;
+   cursor:pointer;
+}
