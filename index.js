@@ -18,16 +18,6 @@ function createCol(colNum) {
             col.classList.add("col")
             row.append(col)
 
-            col.addEventListener("mouseover", (event) => {
-            if (mouseDown) {
-                event.target.style.backgroundColor = "blue";
-            }
-            })
-
-            canvas.addEventListener("dragstart", (event) => {
-            event.preventDefault();
-            });
-
         }
     })
 }
@@ -42,6 +32,10 @@ createCells(16,16)
 // Allow for colouring of grid
 let mouseDown = false;
 
+canvas.addEventListener("dragstart", (event) => {
+event.preventDefault();
+});
+
 document.addEventListener("mousedown", () => {
     mouseDown = true;
 })
@@ -50,5 +44,22 @@ document.addEventListener("mouseup", () => {
     mouseDown = false;
 })
 
+canvas.addEventListener("mouseover", (event) => {
+    if (mouseDown && event.target.classList.contains("col")) {
+        event.target.style.backgroundColor = "blue";
+    }
+});
 
+// Resizing and resetting grid
+const resizeButton = document.querySelector("#resizeButton")
 
+resizeButton.addEventListener("click", () => {
+    let resizePrompt = Number(prompt("Enter the number of squares per side for the new grid (max 100):"))
+
+    if (resizePrompt > 100 || resizePrompt < 1) {
+        return;
+    } else {
+        canvas.innerHTML = "";
+        createCells(resizePrompt, resizePrompt)
+    }
+})

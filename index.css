@@ -1,5 +1,6 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -21,5 +22,9 @@ body {
 .col {
   flex: 1;
   border: 1px solid black;
+}
+
+button {
+  margin-bottom: 10px;
 }
 
